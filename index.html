@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Charan Teja Katari — OpenText Solutions Architect</title>
+  <meta name="description" content="OpenText Solutions Architect with 9 years of ECM & xECM expertise. Calgary-based specialist in Content Server, SAP/SuccessFactors integration, and enterprise content management."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #E9EDF4;
+      --bg2:       #DDE3EE;
+      --white:     #FFFFFF;
+      --navy:      #1B2E4B;
+      --navy-deep: #0F1E33;
+      --sage:      #3D7A8A;
+      --sage-lt:   #5A9BAD;
+      --clay:      #B07A62;
+      --steel:     #4A6080;
+      --text:      #243347;
+      --muted:     #6E82A0;
+      --border:    rgba(27,46,75,0.10);
+      --border2:   rgba(27,46,75,0.06);
+      --card-bg:   rgba(255,255,255,0.68);
+      --card-bg2:  rgba(255,255,255,0.45);
+      --shadow-sm: 0 2px 14px rgba(27,46,75,0.07);
+      --shadow-md: 0 8px 32px rgba(27,46,75,0.11);
+      --shadow-lg: 0 20px 60px rgba(27,46,75,0.14);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Ambient light washes */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 900px 600px at 8% 15%,  rgba(61,122,138,0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 700px 500px at 92% 75%, rgba(27,46,75,0.08)  0%, transparent 70%),
+        radial-gradient(ellipse 500px 400px at 55% 5%,  rgba(176,122,98,0.06) 0%, transparent 70%);
+    }
+    /* Dot grid */
+    body::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(27,46,75,0.09) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 3rem;
+      background: rgba(233,237,244,0.88);
+      backdrop-filter: blur(22px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.25rem; color: var(--navy); }
+    .nav-logo span { color: var(--sage); }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; font-size: 0.85rem; font-weight: 400; color: var(--muted); letter-spacing: 0.02em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-cta { padding: 0.48rem 1.3rem !important; border-radius: 6px !important; background: var(--navy) !important; color: var(--white) !important; font-weight: 500 !important; font-size: 0.8rem !important; }
+    .nav-cta:hover { background: var(--navy-deep) !important; color: var(--white) !important; }
+
+    main { position: relative; z-index: 1; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 8rem 3rem 5rem; max-width: 1180px; margin: 0 auto; gap: 5rem;
+    }
+    .hero-left { flex: 1; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; margin-bottom: 2rem; animation: fadeUp 0.6s ease both; }
+    .eyebrow-line { width: 30px; height: 2px; background: var(--sage); border-radius: 2px; }
+    .eyebrow-text { font-size: 0.73rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sage); }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5rem); font-weight: 600;
+      line-height: 1.08; letter-spacing: -0.01em; color: var(--navy-deep);
+      margin-bottom: 1.5rem; animation: fadeUp 0.6s 0.1s ease both;
+    }
+    h1 em { font-style: italic; color: var(--sage); }
+
+    .hero-sub { font-size: 1.05rem; font-weight: 300; color: var(--muted); line-height: 1.85; max-width: 500px; margin-bottom: 2.8rem; animation: fadeUp 0.6s 0.2s ease both; }
+
+    .hero-stats {
+      display: flex; margin-bottom: 2.8rem; animation: fadeUp 0.6s 0.3s ease both;
+      border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+      background: var(--card-bg); backdrop-filter: blur(14px); box-shadow: var(--shadow-sm); width: fit-content;
+    }
+    .stat { padding: 1.1rem 1.8rem; text-align: center; border-right: 1px solid var(--border); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 700; color: var(--navy); display: block; line-height: 1; margin-bottom: 0.3rem; }
+    .stat-label { font-size: 0.7rem; font-weight: 500; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.4s ease both; }
+    .btn-primary { padding: 0.85rem 2.1rem; border-radius: 8px; background: var(--navy); color: var(--white); font-weight: 500; font-size: 0.9rem; text-decoration: none; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(27,46,75,0.22); }
+    .btn-primary:hover { background: var(--navy-deep); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(27,46,75,0.28); }
+    .btn-ghost { padding: 0.85rem 2.1rem; border-radius: 8px; background: transparent; border: 1.5px solid var(--border); color: var(--navy); font-weight: 400; font-size: 0.9rem; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+    .btn-ghost:hover { border-color: rgba(27,46,75,0.3); background: rgba(27,46,75,0.04); }
+
+    .hero-right { flex: 0 0 310px; animation: fadeUp 0.6s 0.3s ease both; }
+    .hero-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      backdrop-filter: blur(20px); border-radius: 20px; padding: 2.2rem;
+      box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
+    }
+    .hero-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--sage), var(--clay)); border-radius: 20px 20px 0 0; }
+    .avatar-ring { width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, var(--sage), var(--navy)); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 700; color: var(--white); }
+    .card-name { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.15rem; color: var(--navy-deep); margin-bottom: 0.2rem; }
+    .card-title { font-size: 0.76rem; color: var(--sage); font-weight: 500; letter-spacing: 0.03em; margin-bottom: 1.4rem; }
+    .card-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin-bottom: 1.3rem; }
+    .card-info-row { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 0.95rem; font-size: 0.81rem; }
+    .card-info-label { color: var(--muted); font-weight: 400; min-width: 58px; }
+    .card-info-val { color: var(--navy); font-weight: 500; line-height: 1.4; }
+
+    /* ── MARQUEE ── */
+    .marquee-wrapper { overflow: hidden; padding: 1.1rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative; z-index: 1; background: rgba(255,255,255,0.38); }
+    .marquee-track { display: flex; gap: 3rem; width: max-content; animation: marquee 42s linear infinite; }
+    .marquee-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.73rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    .marquee-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--sage); opacity: 0.55; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── SECTION HELPERS ── */
+    section { max-width: 1180px; margin: 0 auto; padding: 6rem 3rem; }
+    .section-label { font-size: 0.71rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.6rem; }
+    .section-label::after { content: ''; display: block; height: 1px; width: 30px; background: var(--sage); opacity: 0.5; }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -0.01em; color: var(--navy-deep); margin-bottom: 1rem; line-height: 1.15; }
+    h2 em { font-style: italic; color: var(--sage); }
+    .section-intro { font-size: 1rem; font-weight: 300; color: var(--muted); line-height: 1.85; max-width: 580px; margin-bottom: 3.5rem; }
+    .section-divider { max-width: 1180px; margin: 0 auto; padding: 0 3rem; }
+    .divider-line { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+
+    .glass-card { background: var(--card-bg); border: 1px solid var(--border); backdrop-filter: blur(16px); border-radius: 16px; padding: 2rem; box-shadow: var(--shadow-sm); transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s; }
+    .glass-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: rgba(61,122,138,0.22); }
+
+    .card-tag { display: inline-block; padding: 0.28rem 0.72rem; border-radius: 4px; font-size: 0.67rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; }
+    .tag-sage  { background: rgba(61,122,138,0.10); color: var(--sage); }
+    .tag-navy  { background: rgba(27,46,75,0.08);   color: var(--navy); }
+    .tag-clay  { background: rgba(176,122,98,0.12);  color: var(--clay); }
+    .tag-steel { background: rgba(74,96,128,0.10);   color: var(--steel); }
+    .card-h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--navy-deep); margin-bottom: 0.6rem; }
+    .card-p { font-size: 0.875rem; font-weight: 300; color: var(--muted); line-height: 1.75; }
+
+    /* ── ABOUT ── */
+    #about .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+    .about-big { grid-column: 1 / -1; }
+    .about-text { font-size: 0.98rem; font-weight: 300; color: var(--muted); line-height: 1.9; }
+    .about-text strong { color: var(--navy); font-weight: 500; }
+
+    /* ── TIMELINE ── */
+    #timeline .tl-wrap { position: relative; padding-left: 2rem; }
+    #timeline .tl-wrap::before { content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(to bottom, var(--sage), rgba(61,122,138,0.15)); border-radius: 2px; }
+
+    .tl-item { position: relative; padding: 0 0 3rem 2.5rem; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot { position: absolute; left: -2.5rem; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--white); border: 2.5px solid var(--sage); box-shadow: 0 0 0 4px rgba(61,122,138,0.12); transition: transform 0.2s; }
+    .tl-item:hover .tl-dot { transform: scale(1.3); }
+
+    .tl-card { background: var(--card-bg); border: 1px solid var(--border); backdrop-filter: blur(16px); border-radius: 14px; padding: 1.7rem 2rem; box-shadow: var(--shadow-sm); transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s; }
+    .tl-card:hover { box-shadow: var(--shadow-md); transform: translateX(4px); border-color: rgba(61,122,138,0.2); }
+
+    .tl-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+    .tl-role { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--navy-deep); }
+    .tl-date { font-size: 0.73rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--sage); background: rgba(61,122,138,0.09); padding: 0.28rem 0.75rem; border-radius: 4px; white-space: nowrap; }
+    .tl-company { font-size: 0.85rem; font-weight: 500; color: var(--steel); margin-bottom: 1rem; }
+    .tl-desc { font-size: 0.875rem; font-weight: 300; color: var(--muted); line-height: 1.8; }
+
+    /* ── SKILLS ── */
+    #skills .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.3rem; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 0.42rem; margin-top: 1rem; }
+    .skill-pill { padding: 0.3rem 0.82rem; border-radius: 4px; background: var(--bg2); border: 1px solid var(--border); font-size: 0.75rem; font-weight: 400; color: var(--text); transition: background 0.2s, border-color 0.2s, color 0.2s; }
+    .skill-pill:hover { background: rgba(61,122,138,0.08); border-color: rgba(61,122,138,0.25); color: var(--sage); }
+
+    /* ── PROJECTS ── */
+    #projects .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 1.4rem; }
+    .proj-card { background: var(--card-bg); border: 1px solid var(--border); backdrop-filter: blur(16px); border-radius: 16px; padding: 1.8rem; box-shadow: var(--shadow-sm); transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; gap: 0; position: relative; overflow: hidden; }
+    .proj-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: linear-gradient(to bottom, var(--sage), transparent); border-radius: 16px 0 0 16px; }
+    .proj-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: rgba(61,122,138,0.22); }
+
+    .proj-industry { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.55rem; }
+    .proj-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--navy-deep); margin-bottom: 0.75rem; line-height: 1.3; }
+    .proj-desc { font-size: 0.84rem; font-weight: 300; color: var(--muted); line-height: 1.75; margin-bottom: 1.1rem; flex: 1; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
+    .proj-tag { padding: 0.22rem 0.65rem; border-radius: 3px; background: rgba(27,46,75,0.06); border: 1px solid rgba(27,46,75,0.09); font-size: 0.7rem; font-weight: 500; color: var(--steel); }
+
+    /* ── CERTIFICATIONS ── */
+    #certifications .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.1rem; }
+    .cert-item { background: var(--card-bg); border: 1px solid var(--border); backdrop-filter: blur(14px); border-radius: 12px; padding: 1.3rem 1.5rem; display: flex; align-items: center; gap: 1rem; box-shadow: var(--shadow-sm); transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s; }
+    .cert-item:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: rgba(61,122,138,0.2); }
+    .cert-icon { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, rgba(61,122,138,0.12), rgba(27,46,75,0.08)); border: 1px solid rgba(61,122,138,0.18); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .cert-name { font-size: 0.83rem; font-weight: 500; color: var(--navy); line-height: 1.4; }
+    .cert-issuer { font-size: 0.7rem; color: var(--muted); margin-top: 0.12rem; font-weight: 300; }
+
+    /* ── CONTACT ── */
+    #contact .contact-inner { background: var(--navy); border-radius: 24px; padding: 5rem; text-align: center; position: relative; overflow: hidden; box-shadow: var(--shadow-lg); }
+    #contact .contact-inner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 20% 50%, rgba(61,122,138,0.25) 0%, transparent 70%), radial-gradient(ellipse 500px 400px at 80% 50%, rgba(176,122,98,0.12) 0%, transparent 70%); pointer-events: none; }
+    #contact h2 { color: var(--white); margin-bottom: 1rem; }
+    #contact h2 em { color: var(--sage-lt); }
+    .contact-sub { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.6); margin-bottom: 2.8rem; max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+    .contact-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+    .btn-light { padding: 0.88rem 2.1rem; border-radius: 8px; background: var(--white); color: var(--navy); font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: background 0.2s, transform 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+    .btn-light:hover { background: var(--bg); transform: translateY(-2px); }
+    .btn-outline-light { padding: 0.88rem 2.1rem; border-radius: 8px; background: transparent; border: 1.5px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.82); font-weight: 400; font-size: 0.9rem; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+    .btn-outline-light:hover { border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.07); }
+
+    footer { text-align: center; padding: 2.5rem 3rem; border-top: 1px solid var(--border); font-size: 0.77rem; font-weight: 300; color: var(--muted); position: relative; z-index: 1; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--sage); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero { flex-direction: column; padding: 7rem 1.5rem 4rem; gap: 2.5rem; }
+      .hero-right { flex: none; width: 100%; }
+      section { padding: 4rem 1.5rem; }
+      #about .about-grid { grid-template-columns: 1fr; }
+      #contact .contact-inner { padding: 2.5rem 1.5rem; }
+      .hero-stats { width: 100%; }
+      .stat { flex: 1; padding: 1rem; }
+      #timeline .tl-wrap { padding-left: 1.5rem; }
+      .tl-item { padding-left: 2rem; }
+      .tl-dot { left: -2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Charan Teja<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#timeline">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact" class="nav-cta">Connect</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <div id="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">OpenText Solutions Architect · Calgary, Canada</span>
+      </div>
+      <h1>Enterprise Content,<br/><em>Architected</em><br/>with Precision.</h1>
+      <p class="hero-sub">Nine years of delivering ECM and Extended ECM solutions for complex enterprise environments — from custom OScript development to full Content Server implementation and administration.</p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">9+</span><span class="stat-label">Years</span></div>
+        <div class="stat"><span class="stat-num">7</span><span class="stat-label">Certifications</span></div>
+        <div class="stat"><span class="stat-num">20+</span><span class="stat-label">Projects</span></div>
+        <div class="stat"><span class="stat-num">xECM</span><span class="stat-label">Architect</span></div>
+      </div>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Let's Connect</a>
+        <a href="#timeline" class="btn-ghost">View Experience</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="avatar-ring">CK</div>
+        <div class="card-name">Charan Teja Katari</div>
+        <div class="card-title">OpenText Solutions Architect · ECM & xECM</div>
+        <div class="card-divider"></div>
+        <div class="card-info-row"><span class="card-info-label">Location</span><span class="card-info-val">Calgary, AB, Canada</span></div>
+        <div class="card-info-row"><span class="card-info-label">Platform</span><span class="card-info-val">OpenText Content Server</span></div>
+        <div class="card-info-row"><span class="card-info-label">Focus</span><span class="card-info-val">xECM · SAP · SuccessFactors · Engineering</span></div>
+        <div class="card-info-row"><span class="card-info-label">Code</span><span class="card-info-val">OScript · Java · JavaScript · REST · SOAP</span></div>
+        <div class="card-divider" style="margin-top:1.2rem;"></div>
+        <a href="https://www.linkedin.com/in/charankatari/" target="_blank" rel="noopener"
+           style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;font-size:0.81rem;color:var(--sage);font-weight:500;transition:opacity 0.2s;"
+           onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          linkedin.com/in/charankatari
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="marquee-sep"></span>Extended ECM for SAP</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>OpenText Content Server</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>xECM for SuccessFactors</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>OScript Development</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>Smart UI Perspectives</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>Archive Center</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>WebReports & LiveReports</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>OTDS Administration</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>Workflow Automation</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>REST & SOAP API</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>Blazon · Brava</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>Core Signature & Share</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>Extended ECM for SAP</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>OpenText Content Server</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>xECM for SuccessFactors</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>OScript Development</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>Smart UI Perspectives</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>Archive Center</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>WebReports & LiveReports</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>OTDS Administration</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>Workflow Automation</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>REST & SOAP API</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>Blazon · Brava</span>
+      <span class="marquee-item"><span class="marquee-sep"></span>Core Signature & Share</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">About</div>
+    <h2>The architect behind<br/>the <em>solution.</em></h2>
+    <p class="section-intro">A rare combination of deep development expertise and hands-on administration experience — bridging the gap that most OpenText specialists miss.</p>
+    <div class="about-grid reveal">
+      <div class="glass-card about-big">
+        <div class="card-tag tag-sage">Profile</div>
+        <p class="about-text">I am a <strong>highly skilled OpenText Content Server expert</strong> with extensive experience across development and administration. With a proven track record, I excel in <strong>implementing ECM and Extended ECM solutions</strong> for Engineering, SuccessFactors, and SAP environments. My expertise spans custom <strong>OScript module development</strong>, WebReports, Workflows, Smart UI customisations, and ActiveViews — all crafted for peak enterprise performance. Beyond development, I am equally proficient in <strong>full Content Server Administration</strong>, including deploying and managing complex OpenText ecosystems such as Archive Center, Brava, Blazon, System Center, and OTDS.</p>
+      </div>
+      <div class="glass-card reveal">
+        <div class="card-tag tag-navy">What I Do</div>
+        <div class="card-h3">ECM Implementation</div>
+        <p class="card-p">End-to-end delivery of OpenText ECM solutions — from architecture and design through to go-live support. Specialising in Extended ECM for Engineering and xECM for SAP/SuccessFactors.</p>
+      </div>
+      <div class="glass-card reveal">
+        <div class="card-tag tag-clay">How I Build</div>
+        <div class="card-h3">Custom Development</div>
+        <p class="card-p">Crafting tailored OScript modules, WebReports, Workflows, and Smart UI perspectives. Integrating enterprise systems via SOAP and REST APIs to create seamless, automated content experiences.</p>
+      </div>
+      <div class="glass-card reveal">
+        <div class="card-tag tag-sage">My Edge</div>
+        <div class="card-h3">Dev + Admin Unified</div>
+        <p class="card-p">A rare ability to operate across the full OpenText stack as both developer and administrator. I understand the code and the infrastructure — so nothing falls through the cracks.</p>
+      </div>
+      <div class="glass-card reveal">
+        <div class="card-tag tag-steel">Location</div>
+        <div class="card-h3">Based in Calgary, AB</div>
+        <p class="card-p">Open to remote, hybrid, and on-site opportunities across Canada and internationally. Experienced delivering solutions for global enterprise clients across multiple industries.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"><div class="divider-line"></div></div>
+
+  <!-- TIMELINE -->
+  <section id="timeline">
+    <div class="section-label">Experience</div>
+    <h2>Career <em>Timeline</em></h2>
+    <p class="section-intro">Nine years across consulting, development, and enterprise architecture — from implementation specialist to solutions architect.</p>
+
+    <div class="tl-wrap">
+
+      <div class="tl-item reveal-left">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div class="tl-role">Senior Consultant</div>
+            <div class="tl-date">May 2023 – Present</div>
+          </div>
+          <div class="tl-company">Turnpikes Canada · Calgary, AB</div>
+          <p class="tl-desc">Analyse, design, and implement OpenText ECM and Extended ECM solutions for enterprise customers across North America. Lead end-to-end delivery of complex implementations spanning xECM for SAP, SuccessFactors, and Engineering — from workshops and solution design through to go-live and support. Manage parallel upgrade projects and drive performance improvement initiatives across multi-instance environments.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal-left">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div class="tl-role">Senior Consultant</div>
+            <div class="tl-date">Aug 2021 – Apr 2023</div>
+          </div>
+          <div class="tl-company">Turnpikes India</div>
+          <p class="tl-desc">Focused on building new solutions with WebReports to enhance Extended ECM capabilities. Delivered a parallel upgrade for a customer with 20,000+ licences. Built an automated signature workflow solution using Core Signature and WebReports — reducing manual effort and accelerating document turnaround. Contributed across multiple concurrent client engagements as a senior delivery resource.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal-left">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div class="tl-role">Consultant — Professional Services</div>
+            <div class="tl-date">May 2019 – Aug 2021</div>
+          </div>
+          <div class="tl-company">OpenText</div>
+          <p class="tl-desc">Part of the Professional Services team focused on implementing and customising Extended ECM for Engineering solutions. Delivered 10+ full xECM for Engineering implementations. Developed multiple solutions enhancing user experience through custom OScript modules, WebReports, LiveReports, ActiveViews, and Appearances. Gained deep expertise in the full OpenText development and administration stack.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal-left">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div class="tl-role">Systems Engineer</div>
+            <div class="tl-date">Oct 2016 – Apr 2019</div>
+          </div>
+          <div class="tl-company">Tata Consultancy Services</div>
+          <p class="tl-desc">Supported multiple enterprise applications including OpenText Content Server. Gained foundational knowledge in ECM administration, content management workflows, and enterprise application support. Developed a strong understanding of enterprise IT environments that underpins the architecture work done in subsequent roles.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"><div class="divider-line"></div></div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">Expertise</div>
+    <h2>Skills &amp; <em>Technologies</em></h2>
+    <p class="section-intro">A deep and broad toolkit built over nine years of hands-on OpenText work across complex global enterprise environments.</p>
+    <div class="skills-grid reveal">
+      <div class="glass-card">
+        <div class="card-tag tag-sage">xECM Solutions</div>
+        <div class="card-h3" style="font-size:1rem;">Extended ECM</div>
+        <div class="skill-list">
+          <span class="skill-pill">Extended ECM for SAP</span>
+          <span class="skill-pill">Extended ECM for SuccessFactors</span>
+          <span class="skill-pill">Core for SAP SuccessFactors</span>
+          <span class="skill-pill">Extended ECM for Engineering</span>
+          <span class="skill-pill">Core Signature</span>
+          <span class="skill-pill">Core Share</span>
+          <span class="skill-pill">Core Collaboration</span>
+        </div>
+      </div>
+      <div class="glass-card">
+        <div class="card-tag tag-navy">Platform</div>
+        <div class="card-h3" style="font-size:1rem;">OpenText Products</div>
+        <div class="skill-list">
+          <span class="skill-pill">Content Server</span>
+          <span class="skill-pill">OTDS</span>
+          <span class="skill-pill">Archive Center</span>
+          <span class="skill-pill">System Center</span>
+          <span class="skill-pill">Blazon</span>
+          <span class="skill-pill">Intelligent Viewing</span>
+          <span class="skill-pill">Brava</span>
+          <span class="skill-pill">PowerDocs</span>
+          <span class="skill-pill">Content Manager</span>
+        </div>
+      </div>
+      <div class="glass-card">
+        <div class="card-tag tag-clay">Development</div>
+        <div class="card-h3" style="font-size:1rem;">Code & Customisation</div>
+        <div class="skill-list">
+          <span class="skill-pill">OScript</span>
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">HTML & CSS</span>
+          <span class="skill-pill">REST API</span>
+          <span class="skill-pill">SOAP API</span>
+          <span class="skill-pill">WebReports</span>
+          <span class="skill-pill">LiveReports</span>
+          <span class="skill-pill">ActiveViews</span>
+          <span class="skill-pill">Appearances</span>
+        </div>
+      </div>
+      <div class="glass-card">
+        <div class="card-tag tag-steel">Configuration</div>
+        <div class="card-h3" style="font-size:1rem;">Workflows & UI</div>
+        <div class="skill-list">
+          <span class="skill-pill">Workflows</span>
+          <span class="skill-pill">Forms & Form Templates</span>
+          <span class="skill-pill">Smart UI Perspectives</span>
+          <span class="skill-pill">LiveReport Optimisation</span>
+          <span class="skill-pill">Performance Tuning</span>
+          <span class="skill-pill">OScript Optimisation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"><div class="divider-line"></div></div>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">Projects</div>
+    <h2>Selected <em>Project Work</em></h2>
+    <p class="section-intro">A cross-section of enterprise engagements delivered across oil & gas, manufacturing, HR, construction, and more.</p>
+    <div class="proj-grid reveal">
+
+      <div class="proj-card">
+        <div class="proj-industry">Oil & Gas · Colombia</div>
+        <div class="proj-title">Platform Upgrade & Performance Enhancement</div>
+        <p class="proj-desc">Health check of existing implementation followed by parallel upgrade of all OpenText products from version 22.1 to 25.4. Delivered performance improvements post-upgrade across Content Server and OTDS.</p>
+        <div class="proj-tags"><span class="proj-tag">Parallel Upgrade</span><span class="proj-tag">Content Server</span><span class="proj-tag">OTDS</span><span class="proj-tag">Performance</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-industry">Retail · United States</div>
+        <div class="proj-title">OnBase to Content Server Migration & Custom Search</div>
+        <p class="proj-desc">Led migration from OnBase to OpenText Content Server. Designed and developed a custom search solution replicating OnBase functionality using WebReports, REST APIs, JavaScript, and Forms — including a dynamic UI for parameter collection and optimised query execution.</p>
+        <div class="proj-tags"><span class="proj-tag">WebReports</span><span class="proj-tag">REST API</span><span class="proj-tag">JavaScript</span><span class="proj-tag">Forms</span><span class="proj-tag">Migration</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-industry">Technology · Multinational</div>
+        <div class="proj-title">Extended ECM for PowerDocs & DocuSign Integration</div>
+        <p class="proj-desc">Supported Workday-to-SuccessFactors migration with full xECM for SuccessFactors and PowerDocs implementation. Designed 400+ document templates, built Business Object mappings, custom XSLT scripts, and integrated PowerDocs with DocuSign for automated e-signatures.</p>
+        <div class="proj-tags"><span class="proj-tag">PowerDocs</span><span class="proj-tag">xECM</span><span class="proj-tag">SuccessFactors</span><span class="proj-tag">DocuSign</span><span class="proj-tag">XSLT</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-industry">Energy · United States</div>
+        <div class="proj-title">Java & REST API Invoice Viewer</div>
+        <p class="proj-desc">Developed a Java application enabling external websites to view PDF invoices via URL-passed attributes. The solution makes REST API calls to Content Server, fetches documents, and renders them in-browser. Deployed as a WAR artifact on Tomcat with environment-agnostic configuration.</p>
+        <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">REST API</span><span class="proj-tag">Tomcat</span><span class="proj-tag">Content Server</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-industry">HR Tech · Norway</div>
+        <div class="proj-title">Content Server to Azure Service Bus Integration</div>
+        <p class="proj-desc">Developed a custom WebReport subtag to generate Azure-compatible encryption keys. Integrated Java code with OScript, built complex SQL queries to extract metadata, and transmitted data to Azure Service Bus via REST API — enabling real-time content-to-cloud data flow.</p>
+        <div class="proj-tags"><span class="proj-tag">OScript</span><span class="proj-tag">Java</span><span class="proj-tag">Azure</span><span class="proj-tag">REST API</span><span class="proj-tag">WebReports</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-industry">Retail · United States</div>
+        <div class="proj-title">xECM for SAP SuccessFactors — Tire Chain</div>
+        <p class="proj-desc">Full xECM for SuccessFactors implementation including workshops, Business Object configuration, Connected Workspaces, PowerDocs with 15+ templates, and Core Signature integration for automated offer letter signing. Custom reports for document and signature status tracking.</p>
+        <div class="proj-tags"><span class="proj-tag">xECM</span><span class="proj-tag">SuccessFactors</span><span class="proj-tag">PowerDocs</span><span class="proj-tag">Core Signature</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-industry">Oil & Gas · Canada</div>
+        <div class="proj-title">Extended ECM for Engineering Implementation</div>
+        <p class="proj-desc">End-to-end Extended ECM for Engineering implementation for a Canadian oil and gas customer. Configured document templates, categories, revision control, StateFlows, distribution matrices, inbound/outbound transmittals, and legacy document migration via Object Importer.</p>
+        <div class="proj-tags"><span class="proj-tag">xECM Engineering</span><span class="proj-tag">StateFlows</span><span class="proj-tag">Transmittals</span><span class="proj-tag">Migration</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-industry">Manufacturing · Switzerland</div>
+        <div class="proj-title">Custom OScript Module Suite & Performance Tuning</div>
+        <p class="proj-desc">Built two custom OScript modules: one to auto-rename files based on category attributes (with admin screen), and another exposing REST API endpoints to return metadata as structured Assoc objects. Also performed deep performance tuning on WebReports and LiveReports by analysing thread and connect logs.</p>
+        <div class="proj-tags"><span class="proj-tag">OScript</span><span class="proj-tag">REST API</span><span class="proj-tag">WebReports</span><span class="proj-tag">Performance</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-industry">Renewables · India</div>
+        <div class="proj-title">xECM for Engineering & Smart UI S-Curve Visualisation</div>
+        <p class="proj-desc">Designed ProcessFlows, built a custom email notification solution, and developed an S-Curve visualisation component in Smart UI. Also handled full Brava and Blazon installation and configuration for document viewing capability.</p>
+        <div class="proj-tags"><span class="proj-tag">xECM Engineering</span><span class="proj-tag">Smart UI</span><span class="proj-tag">Brava</span><span class="proj-tag">Blazon</span><span class="proj-tag">ProcessFlow</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-industry">Shipping · Europe</div>
+        <div class="proj-title">Large-Scale Parallel Upgrade — 10-Instance Production</div>
+        <p class="proj-desc">Parallel upgrade of Content Server across 4 environments including a production setup with 10 instances. Upgraded Archive Center, Blazon, and OTDS. Implemented SSO and split dual-instance server deployments into separate servers for improved resilience.</p>
+        <div class="proj-tags"><span class="proj-tag">Parallel Upgrade</span><span class="proj-tag">Archive Center</span><span class="proj-tag">SSO</span><span class="proj-tag">Blazon</span><span class="proj-tag">OTDS</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-industry">Energy · United States</div>
+        <div class="proj-title">Extended ECM for Engineering — American Gas Company</div>
+        <p class="proj-desc">Complete Extended ECM for Engineering implementation including ADN, CRT Dashboards, Distribution Matrix, and BulkLoad Template development. Configured Smart UI for xECM objects and developed WebReports to automate Process Flow steps — reducing manual workload significantly.</p>
+        <div class="proj-tags"><span class="proj-tag">xECM Engineering</span><span class="proj-tag">WebReports</span><span class="proj-tag">Smart UI</span><span class="proj-tag">ProcessFlow</span><span class="proj-tag">BulkLoad</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-industry">HR Tech · Europe</div>
+        <div class="proj-title">Core for SAP SuccessFactors Implementation</div>
+        <p class="proj-desc">Conducted workshops and implemented Core for SAP SuccessFactors — configuring document types, federated compliance, document pipeline for data migration, and interactive document templates for offer letters and policy documents, supporting both interactive and self-generation flows.</p>
+        <div class="proj-tags"><span class="proj-tag">Core SF</span><span class="proj-tag">SuccessFactors</span><span class="proj-tag">Document Pipeline</span><span class="proj-tag">Templates</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"><div class="divider-line"></div></div>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="section-label">Credentials</div>
+    <h2>OpenText <em>Certifications</em></h2>
+    <p class="section-intro">Formally recognised expertise across the OpenText ecosystem — seven certifications spanning development, architecture, and administration.</p>
+    <div class="cert-grid reveal">
+      <div class="cert-item"><div class="cert-icon">🏗️</div><div><div class="cert-name">Extended ECM for Engineering — Business Administrator</div><div class="cert-issuer">OpenText Certified</div></div></div>
+      <div class="cert-item"><div class="cert-icon">💻</div><div><div class="cert-name">OpenText Certified Developer</div><div class="cert-issuer">OpenText</div></div></div>
+      <div class="cert-item"><div class="cert-icon">⚙️</div><div><div class="cert-name">OScript Developer — Internally Certified</div><div class="cert-issuer">OpenText Internal Certification</div></div></div>
+      <div class="cert-item"><div class="cert-icon">🔗</div><div><div class="cert-name">Extended ECM for SAP SuccessFactors</div><div class="cert-issuer">OpenText Certified</div></div></div>
+      <div class="cert-item"><div class="cert-icon">📂</div><div><div class="cert-name">Content Server Developer</div><div class="cert-issuer">OpenText Certified</div></div></div>
+      <div class="cert-item"><div class="cert-icon">🛡️</div><div><div class="cert-name">Content Server Business Administrator</div><div class="cert-issuer">OpenText Certified</div></div></div>
+      <div class="cert-item"><div class="cert-icon">🗄️</div><div><div class="cert-name">Archive Center Administrator</div><div class="cert-issuer">OpenText Certified</div></div></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner reveal">
+      <div class="section-label" style="justify-content:center;margin-bottom:0.8rem;color:rgba(90,155,173,0.9);">Contact</div>
+      <h2>Ready to build<br/><em>something great?</em></h2>
+      <p class="contact-sub">Whether you need an OpenText architect, an ECM specialist, or someone who can do both — I'd love to connect and explore how I can help.</p>
+      <div class="contact-actions">
+        <a href="https://www.linkedin.com/in/charankatari/" target="_blank" rel="noopener" class="btn-light">Connect on LinkedIn</a>
+        <a href="mailto:charantejakatari@gmail.com" class="btn-outline-light">Send an Email</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Charan Teja Katari &nbsp;·&nbsp; Calgary, AB &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/charankatari/" target="_blank">LinkedIn</a></p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const allReveals = document.querySelectorAll('.reveal, .reveal-left');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07 });
+  allReveals.forEach(el => io.observe(el));
+
+  // Nav active highlight
+  const sections = document.querySelectorAll('section[id], div[id="hero"]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 130) cur = sec.id; });
+    navLinks.forEach(a => { a.style.color = a.getAttribute('href') === `#${cur}` ? 'var(--navy)' : ''; });
+  }, { passive: true });
+</script>
+</body>
+</html>
