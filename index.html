@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Charan Teja Katari — OpenText Solutions Architect</title>
-  <meta name="description" content="OpenText Solutions Architect with 9 years of ECM & xECM expertise. Calgary-based specialist in Content Server and other OpenText products Implementataion,Extended ECM for Engineering Implementation and SuccessFactors integration."/>
+  <meta name="description" content="OpenText Solutions Architect with 10+ years of ECM & xECM expertise, now building RAG and LLM-powered document search with Python. Calgary-based specialist in Content Server, Extended ECM for Engineering and SuccessFactors integration."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
@@ -30,6 +30,9 @@
       --shadow-sm: 0 2px 14px rgba(27,46,75,0.07);
       --shadow-md: 0 8px 32px rgba(27,46,75,0.11);
       --shadow-lg: 0 20px 60px rgba(27,46,75,0.14);
+      --ai:        #C2563A;
+      --ai-soft:   rgba(194,86,58,0.09);
+      --ai-border: rgba(194,86,58,0.45);
     }
 
     html { scroll-behavior: smooth; }
@@ -97,7 +100,17 @@
     }
     h1 em { font-style: italic; color: var(--sage); }
 
-    .hero-sub { font-size: 1.05rem; font-weight: 300; color: var(--muted); line-height: 1.85; max-width: 500px; margin-bottom: 2.8rem; animation: fadeUp 0.6s 0.2s ease both; }
+    .hero-sub { font-size: 1.05rem; font-weight: 300; color: var(--muted); line-height: 1.85; max-width: 500px; margin-bottom: 1.4rem; animation: fadeUp 0.6s 0.2s ease both; }
+
+    /* AI highlight pill in hero */
+    .hero-ai {
+      display: inline-flex; align-items: center; gap: 0.7rem; max-width: 520px;
+      padding: 0.7rem 1.1rem; margin-bottom: 2.4rem; border-radius: 10px;
+      background: var(--ai-soft); border: 1px solid var(--ai-border);
+      font-size: 0.88rem; font-weight: 400; color: var(--navy-deep); line-height: 1.5;
+      animation: fadeUp 0.6s 0.25s ease both;
+    }
+    .hero-ai strong { color: var(--ai); font-weight: 600; }
 
     .hero-stats {
       display: flex; margin-bottom: 2.8rem; animation: fadeUp 0.6s 0.3s ease both;
@@ -129,11 +142,14 @@
     .card-info-row { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 0.95rem; font-size: 0.81rem; }
     .card-info-label { color: var(--muted); font-weight: 400; min-width: 58px; }
     .card-info-val { color: var(--navy); font-weight: 500; line-height: 1.4; }
+    .card-info-val.ai { color: var(--ai); }
 
     /* ── MARQUEE ── */
     .marquee-wrapper { overflow: hidden; padding: 1.1rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative; z-index: 1; background: rgba(255,255,255,0.38); }
     .marquee-track { display: flex; gap: 3rem; width: max-content; animation: marquee 42s linear infinite; }
     .marquee-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.73rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    .marquee-item.ai { color: var(--ai); font-weight: 600; }
+    .marquee-item.ai .marquee-sep { background: var(--ai); opacity: 0.8; }
     .marquee-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--sage); opacity: 0.55; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
@@ -155,14 +171,27 @@
     .tag-navy  { background: rgba(27,46,75,0.08);   color: var(--navy); }
     .tag-clay  { background: rgba(176,122,98,0.12);  color: var(--clay); }
     .tag-steel { background: rgba(74,96,128,0.10);   color: var(--steel); }
+    .tag-ai    { background: var(--ai); color: var(--white); }
     .card-h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--navy-deep); margin-bottom: 0.6rem; }
     .card-p { font-size: 0.875rem; font-weight: 300; color: var(--muted); line-height: 1.75; }
+
+    /* ── AI HIGHLIGHT (new) ── */
+    .ai-highlight {
+      background: linear-gradient(180deg, rgba(194,86,58,0.07), rgba(255,255,255,0.72));
+      border: 1.5px solid var(--ai-border);
+      box-shadow: 0 6px 28px rgba(194,86,58,0.14);
+    }
+    .ai-highlight:hover { border-color: var(--ai); box-shadow: 0 10px 34px rgba(194,86,58,0.2); }
+    .ai-badge { display: inline-block; margin-left: 0.5rem; padding: 0.15rem 0.5rem; border-radius: 4px; background: var(--ai); color: var(--white); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; vertical-align: middle; }
+    .ai-pill { background: var(--ai-soft) !important; border-color: var(--ai-border) !important; color: var(--ai) !important; font-weight: 500; }
 
     /* ── ABOUT ── */
     #about .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
     .about-big { grid-column: 1 / -1; }
     .about-text { font-size: 0.98rem; font-weight: 300; color: var(--muted); line-height: 1.9; }
+    .about-text + .about-text { margin-top: 1rem; }
     .about-text strong { color: var(--navy); font-weight: 500; }
+    .about-text .ai-mark { color: var(--ai); font-weight: 500; background: var(--ai-soft); padding: 0 0.25em; border-radius: 3px; }
 
     /* ── TIMELINE ── */
     #timeline .tl-wrap { position: relative; padding-left: 2rem; }
@@ -181,6 +210,7 @@
     .tl-date { font-size: 0.73rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--sage); background: rgba(61,122,138,0.09); padding: 0.28rem 0.75rem; border-radius: 4px; white-space: nowrap; }
     .tl-company { font-size: 0.85rem; font-weight: 500; color: var(--steel); margin-bottom: 1rem; }
     .tl-desc { font-size: 0.875rem; font-weight: 300; color: var(--muted); line-height: 1.8; }
+    .tl-desc .ai-mark { color: var(--ai); font-weight: 500; background: var(--ai-soft); padding: 0 0.25em; border-radius: 3px; }
 
     /* ── SKILLS ── */
     #skills .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.3rem; }
@@ -193,6 +223,13 @@
     .proj-card { background: var(--card-bg); border: 1px solid var(--border); backdrop-filter: blur(16px); border-radius: 16px; padding: 1.8rem; box-shadow: var(--shadow-sm); transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; gap: 0; position: relative; overflow: hidden; }
     .proj-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: linear-gradient(to bottom, var(--sage), transparent); border-radius: 16px 0 0 16px; }
     .proj-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: rgba(61,122,138,0.22); }
+    .proj-card.ai-highlight { grid-column: 1 / -1; background: linear-gradient(180deg, rgba(194,86,58,0.07), rgba(255,255,255,0.72)); border: 1.5px solid var(--ai-border); box-shadow: 0 6px 28px rgba(194,86,58,0.14); }
+    .proj-card.ai-highlight::before { background: linear-gradient(to bottom, var(--ai), transparent); width: 4px; }
+    .proj-card.ai-highlight:hover { border-color: var(--ai); box-shadow: 0 10px 34px rgba(194,86,58,0.2); }
+    .proj-card.ai-highlight .proj-industry { color: var(--ai); }
+    .proj-card.ai-highlight .proj-tag { background: var(--ai-soft); border-color: var(--ai-border); color: var(--ai); }
+    .proj-link { display: inline-block; margin-top: 1.1rem; font-size: 0.85rem; font-weight: 500; color: var(--ai); text-decoration: none; }
+    .proj-link:hover { text-decoration: underline; }
 
     .proj-industry { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.55rem; }
     .proj-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--navy-deep); margin-bottom: 0.75rem; line-height: 1.3; }
@@ -230,6 +267,11 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-left { opacity: 0; transform: translateX(-16px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+      .reveal, .reveal-left { opacity: 1; transform: none; transition: none; }
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
@@ -271,10 +313,12 @@
         <span class="eyebrow-text">OpenText Solutions Architect · Calgary, Canada</span>
       </div>
       <h1>Enterprise Content,<br/><em>Architected</em><br/>with Precision.</h1>
-      <p class="hero-sub">Nine years of delivering ECM and Extended ECM solutions for complex enterprise environments — from custom OScript development to full Content Server implementation and administration.</p>
+      <p class="hero-sub">Ten-plus years of delivering ECM and Extended ECM solutions for complex enterprise environments — from custom OScript development to full Content Server implementation and administration.</p>
+      <!-- AI-HIGHLIGHT: new -->
+      <div class="hero-ai"><span><strong>Now building:</strong> Python RAG pipelines and LLM-powered search over enterprise documents.</span></div>
       <div class="hero-stats">
-        <div class="stat"><span class="stat-num">10</span><span class="stat-label">Years</span></div>
-        <div class="stat"><span class="stat-num">8</span><span class="stat-label">Certifications</span></div>
+        <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Years</span></div>
+        <div class="stat"><span class="stat-num">9</span><span class="stat-label">Certifications</span></div>
         <div class="stat"><span class="stat-num">40+</span><span class="stat-label">Projects</span></div>
         <div class="stat"><span class="stat-num">Extended ECM</span><span class="stat-label">Architect</span></div>
       </div>
@@ -292,7 +336,9 @@
         <div class="card-info-row"><span class="card-info-label">Location</span><span class="card-info-val">Calgary, AB, Canada</span></div>
         <div class="card-info-row"><span class="card-info-label">Platform</span><span class="card-info-val">OpenText Content Server</span></div>
         <div class="card-info-row"><span class="card-info-label">Focus</span><span class="card-info-val">xECM · SAP · SuccessFactors · Engineering</span></div>
-        <div class="card-info-row"><span class="card-info-label">Code</span><span class="card-info-val">OScript · Java · JavaScript · REST · SOAP</span></div>
+        <div class="card-info-row"><span class="card-info-label">Code</span><span class="card-info-val">OScript · Java · JavaScript · Python · REST · SOAP</span></div>
+        <!-- AI-HIGHLIGHT: new -->
+        <div class="card-info-row"><span class="card-info-label">AI</span><span class="card-info-val ai">RAG · LLM-Powered Document Search</span></div>
         <div class="card-divider" style="margin-top:1.2rem;"></div>
         <a href="https://www.linkedin.com/in/charankatari/" target="_blank" rel="noopener"
            style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;font-size:0.81rem;color:var(--sage);font-weight:500;transition:opacity 0.2s;"
@@ -300,13 +346,17 @@
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           linkedin.com/in/charankatari
         </a>
-      </div>       
+      </div>
     </div>
   </div>
 
   <!-- MARQUEE -->
   <div class="marquee-wrapper">
     <div class="marquee-track">
+      <!-- AI-HIGHLIGHT: new items (first three) -->
+      <span class="marquee-item ai"><span class="marquee-sep"></span>Python</span>
+      <span class="marquee-item ai"><span class="marquee-sep"></span>RAG Pipelines</span>
+      <span class="marquee-item ai"><span class="marquee-sep"></span>LLM-Powered Document Search</span>
       <span class="marquee-item"><span class="marquee-sep"></span>OpenText Content Server</span>
       <span class="marquee-item"><span class="marquee-sep"></span>Extended ECM for SuccessFactors</span>
       <span class="marquee-item"><span class="marquee-sep"></span>OScript Development</span>
@@ -333,11 +383,13 @@
   <section id="about">
     <div class="section-label">About</div>
     <h2>The architect behind<br/>the <em>solution.</em></h2>
-    <p class="section-intro">A rare combination of deep development expertise and hands-on administration experience — bridging the gap that most OpenText specialists miss.</p>
+    <p class="section-intro">A rare combination of deep development expertise and hands-on administration experience — now extended into Python and AI-powered document search.</p>
     <div class="about-grid reveal">
       <div class="glass-card about-big">
         <div class="card-tag tag-sage">Profile</div>
-        <p class="about-text">I am a <strong>highly skilled OpenText Content Server expert</strong> with extensive experience across development and administration. With a proven track record, I excel in <strong>implementing ECM and Extended ECM solutions</strong> for Engineering, SuccessFactors, and SAP environments. My expertise spans custom <strong>OScript module development</strong>, WebReports, Workflows, Smart UI customisations, and ActiveViews — all crafted for peak enterprise performance. Beyond development, I am equally proficient in <strong>full Content Server Administration</strong>, including deploying and managing complex OpenText ecosystems such as Archive Center, Brava, Blazon, System Center, and OTDS.</p>
+        <p class="about-text">I am a <strong>highly skilled OpenText Content Server expert</strong> with <strong>10+ years</strong> of experience across development and administration. With a proven track record, I excel in <strong>implementing ECM and Extended ECM solutions</strong> for Engineering, SuccessFactors, and SAP environments. My expertise spans custom <strong>OScript module development</strong>, WebReports, Workflows, Smart UI customisations, and ActiveViews — all crafted for peak enterprise performance. Beyond development, I am equally proficient in <strong>full Content Server Administration</strong>, including deploying and managing complex OpenText ecosystems such as Archive Center, Brava, Blazon, System Center, and OTDS.</p>
+        <!-- AI-HIGHLIGHT: new paragraph -->
+        <p class="about-text">More recently, I have been combining that enterprise content experience with <span class="ai-mark">Python, retrieval-augmented generation (RAG) and LLM-powered document search</span> — building pipelines that chunk, index and search documents and return answers to natural-language questions.</p>
       </div>
       <div class="glass-card reveal">
         <div class="card-tag tag-navy">What I Do</div>
@@ -348,6 +400,12 @@
         <div class="card-tag tag-clay">How I Build</div>
         <div class="card-h3">Custom Development</div>
         <p class="card-p">Crafting tailored OScript modules, WebReports, Workflows, and Smart UI perspectives. Integrating enterprise systems via SOAP and REST APIs to create seamless, automated content experiences.</p>
+      </div>
+      <!-- AI-HIGHLIGHT: new card -->
+      <div class="glass-card ai-highlight reveal">
+        <div class="card-tag tag-ai">New · AI &amp; Python</div>
+        <div class="card-h3">Document AI</div>
+        <p class="card-p">Building Python RAG pipelines for LLM-powered document search, bringing natural-language question answering to enterprise content with attention to retrieval quality, permissions and governance.</p>
       </div>
       <div class="glass-card reveal">
         <div class="card-tag tag-sage">My Edge</div>
@@ -368,7 +426,7 @@
   <section id="timeline">
     <div class="section-label">Experience</div>
     <h2>Career <em>Timeline</em></h2>
-    <p class="section-intro">Nine years across consulting, development, and enterprise architecture — from implementation specialist to solutions architect.</p>
+    <p class="section-intro">Ten-plus years across consulting, development, and enterprise architecture — from implementation specialist to solutions architect.</p>
 
     <div class="tl-wrap">
 
@@ -429,8 +487,20 @@
   <section id="skills">
     <div class="section-label">Expertise</div>
     <h2>Skills &amp; <em>Technologies</em></h2>
-    <p class="section-intro">A deep and broad toolkit built over nine years of hands-on OpenText work across complex global enterprise environments.</p>
+    <p class="section-intro">A deep and broad toolkit built over ten years of hands-on OpenText work across complex global enterprise environments.</p>
     <div class="skills-grid reveal">
+      <!-- AI-HIGHLIGHT: new card -->
+      <div class="glass-card ai-highlight">
+        <div class="card-tag tag-ai">New · AI &amp; Python</div>
+        <div class="card-h3" style="font-size:1rem;">Document AI</div>
+        <div class="skill-list">
+          <span class="skill-pill ai-pill">Python</span>
+          <span class="skill-pill ai-pill">RAG Pipelines</span>
+          <span class="skill-pill ai-pill">LLM-Powered Document Search</span>
+          <span class="skill-pill ai-pill">Document Chunking &amp; Retrieval</span>
+          <!-- Add your stack here, e.g. embedding model, vector store, FastAPI -->
+        </div>
+      </div>
       <div class="glass-card">
         <div class="card-tag tag-sage">xECM Solutions</div>
         <div class="card-h3" style="font-size:1rem;">Extended ECM</div>
@@ -466,6 +536,7 @@
           <span class="skill-pill">OScript</span>
           <span class="skill-pill">Java</span>
           <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill ai-pill">Python</span>
           <span class="skill-pill">HTML & CSS</span>
           <span class="skill-pill">REST API</span>
           <span class="skill-pill">SOAP API</span>
@@ -498,6 +569,17 @@
     <h2>Selected <em>Project Work</em></h2>
     <p class="section-intro">A cross-section of enterprise engagements delivered across oil & gas, manufacturing, HR, construction, and more.</p>
     <div class="proj-grid reveal">
+
+      <!-- AI-HIGHLIGHT: new featured project -->
+      <div class="proj-card ai-highlight">
+        <div class="proj-industry">Personal Project · AI &amp; Python</div>
+        <div class="proj-title">RAG Pipeline for LLM-Powered Document Search</div>
+        <p class="proj-desc">A personal project: a Python retrieval-augmented generation pipeline that chunks and indexes documents, searches them for relevant passages, and returns answers to natural-language queries. Built to bring AI-powered search to enterprise content.</p>
+        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">RAG</span><span class="proj-tag">LLM</span><span class="proj-tag">Document Search</span><span class="proj-tag">Chunking &amp; Retrieval</span></div>
+        <!-- Add your repo link, then uncomment:
+        <a class="proj-link" href="https://github.com/YOUR-USERNAME/YOUR-REPO" target="_blank" rel="noopener">View on GitHub</a>
+        -->
+      </div>
 
       <div class="proj-card">
         <div class="proj-industry">Oil & Gas · Colombia</div>
@@ -607,7 +689,7 @@
 	&nbsp;
 	<h2>AI <em>Certifications</em></h2>
 	<div class="cert-grid reveal">
-	<div class="cert-item"><div class="cert-icon">💡</div><div><div class="cert-name">Google AI Professional Certificate</div><div class="cert-issuer">Google Certified</div></div></div>
+	<div class="cert-item ai-highlight"><div class="cert-icon">💡</div><div><div class="cert-name">Google AI Professional Certificate</div><div class="cert-issuer">Google Certified</div></div></div>
 	</div>
   </section>
 
@@ -616,7 +698,7 @@
     <div class="contact-inner reveal">
       <div class="section-label" style="justify-content:center;margin-bottom:0.8rem;color:rgba(90,155,173,0.9);">Contact</div>
       <h2>Ready to build<br/><em>something great?</em></h2>
-      <p class="contact-sub">Whether you need an OpenText architect, an ECM specialist, or someone who can do both — I'd love to connect and explore how I can help.</p>
+      <p class="contact-sub">Whether you need an OpenText architect, an ECM specialist, or someone who can bring AI-powered document search to enterprise content — I'd love to connect and explore how I can help.</p>
       <div class="contact-actions">
         <a href="https://www.linkedin.com/in/charankatari/" target="_blank" rel="noopener" class="btn-light">Connect on LinkedIn</a>
         <a href="mailto:charankatari95@gmail.com" class="btn-outline-light">Send an Email</a>
